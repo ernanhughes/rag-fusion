@@ -1,12 +1,19 @@
 import requests
 import json
 import logging
-from config import config
+from config import appConfig
+import ollama
+
+logger = logging.getLogger(__name__)
+
+def to_embedding(text, model_name = "mxbai-embed-large"):
+    response = ollama.embed(model=model_name, input=text)
+    return response["embeddings"]
 
 
-def generate_embeddings(text, model_name=config["EMBEDDING_MODEL_NAME"]):
+def generate_embeddings(text, model_name=appConfig["EMBEDDING_MODEL_NAME"]):
     try:
-        url = f"{config['OLLAMA_BASE_URL']}/api/embed"
+        url = f"{appConfig['OLLAMA_BASE_URL']}/api/embed"
         data = {"input": text, "model": model_name}
         response = requests.post(url, json=data)
         response.raise_for_status() # Raise HTTPError for bad responses (4xx or 5xx)
@@ -20,8 +27,8 @@ def generate_embeddings(text, model_name=config["EMBEDDING_MODEL_NAME"]):
         return None
     
    
-def chat(prompt, model_name=config["MODEL_NAME"], 
-         ollama_base_url=config["OLLAMA_BASE_URL"]):
+def chat(prompt, model_name=appConfig["CHAT_MODEL_NAME"],
+         ollama_base_url=appConfig["OLLAMA_BASE_URL"]):
     """Chat with Ollama."""
     try:
         url = f"{ollama_base_url}/api/generate"

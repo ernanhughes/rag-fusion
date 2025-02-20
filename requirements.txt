@@ -1,5 +1,14 @@
+ipykernel
+ollama
+requests
 faiss-cpu
 PyPDF2
 toml
 nltk
 sentence_transformers
+sqlite_vec
+numpy<2
+tqdm
+asyncio
+rank_bm25
+langchain_community

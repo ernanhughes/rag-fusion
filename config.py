@@ -6,15 +6,21 @@ class Config:
     """Configuration class that loads from `config.toml` if available, otherwise uses defaults."""
 
     DEFAULTS = {
-        "MODEL_NAME": "qwen2.5",
+        "CHAT_MODEL_NAME": "qwen2.5",
         "OLLAMA_BASE_URL": "http://localhost:11434",
-        "EMBEDDING_MODEL_NAME": "mxbai-embed-large",
+        "EMBEDDING_MODEL": "mxbai-embed-large",
+        "EMBEDDING_DIMS": 1024,
         "LOG_FILE": "app.log",
         "LOG_LEVEL": "DEBUG",
-        "chunk_size": 500,
-        "chunk_overlap": 50,
+        "DATA_DIR": "./data",
+        "DB_NAME": "rag_fusion.db",
+        "SCHEMA_FILE": "schema.sql",
+        "VECTOR_DB_NAME": "rag_fusion_vector.db",
+        "CHUNK_SIZE": 500,
+        "CHUNK_OVERLAP": 50,
         "top_k": 5,
         "rrf_k": 60,
+        "max_search_results": 5,    
         "num_queries": 3
     }
 
@@ -30,5 +36,5 @@ class Config:
         return cls.DEFAULTS  # If file is missing or fails to load
 
 # Load configuration
-config = Config.load_config()
+appConfig = Config.load_config()
 
