@@ -6,7 +6,7 @@ class Config:
     """Configuration class that loads from `config.toml` if available, otherwise uses defaults."""
 
     DEFAULTS = {
-        "CHAT_MODEL_NAME": "qwen2.5",
+        "CHAT_MODEL": "qwen2.5",
         "OLLAMA_BASE_URL": "http://localhost:11434",
         "EMBEDDING_MODEL": "mxbai-embed-large",
         "EMBEDDING_DIMS": 1024,
@@ -21,7 +21,7 @@ class Config:
         "top_k": 5,
         "rrf_k": 60,
         "max_search_results": 5,    
-        "num_queries": 3
+        "num_queries": 5
     }
 
     @classmethod

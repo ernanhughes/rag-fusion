@@ -27,7 +27,7 @@ def generate_embeddings(text, model_name=appConfig["EMBEDDING_MODEL_NAME"]):
         return None
     
    
-def chat(prompt, model_name=appConfig["CHAT_MODEL_NAME"],
+def chat(prompt, model_name=appConfig["MODEL_NAME"],
          ollama_base_url=appConfig["OLLAMA_BASE_URL"]):
     """Chat with Ollama."""
     try:
